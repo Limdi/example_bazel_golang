@@ -4,4 +4,4 @@ package(
 
 load("@io_bazel_rules_go//go:def.bzl", "go_prefix")
 
-go_prefix("github.com/bazelbuild/go_test")
+go_prefix("github.com/limdi/testing_go")
