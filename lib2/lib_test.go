@@ -15,11 +15,12 @@ limitations under the License.
 
 package lib
 
-// Meaning calculates the meaning of Life, the Universe and Everything.
-func Meaning() int {
-	return 42
-}
+import (
+	"testing"
+)
 
-func MeaningLib() int {
-	return 43
+func TestMeaning(t *testing.T) {
+	if m := Meaning(); m != 42 {
+		t.Errorf("got %d, want 42", m)
+	}
 }

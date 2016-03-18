@@ -10,11 +10,6 @@ git_repository(
 #	commit = " a3a036c",
 #)
 
-#local_repository(
-#	name = "io_bazel_rules_go",
-#	path = "/home/limdi/rules_go",
-#)
-
 load("@io_bazel_rules_go//go:def.bzl", "go_repositories")
 
 go_repositories()
