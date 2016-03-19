@@ -18,10 +18,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/limdi/testing_go/lib"
+	"github.com/limdi/testing_go/libtwo"
 )
 
 func main() {
-	fmt.Println("meaning: ", lib.Meaning())
+	fmt.Println("meaning: ", libtwo.MeaningLibTwo())
 	//fmt.Println("vendored: ", vendored.Vendored())
 }
