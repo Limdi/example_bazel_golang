@@ -16,14 +16,21 @@ limitations under the License.
 package lib
 
 import (
-	"github.com/limdi/testing_go/lib"
+	l "github.com/limdi/testing_go/lib"
+	"github.com/limdi/testing_go/libtwo"
+	"testing"
 )
 
-// Meaning calculates the meaning of Life, the Universe and Everything.
-func Meaning() int {
-	return 42
-}
+func TestMeaning(t *testing.T) {
+	if m := Meaning(); m != 42 {
+		t.Errorf("got %d, want 42", m)
+	}
 
-func MeaningLib2() int {
-	return lib.MeaningLib() + 55
+	if m := l.MeaningLib(); m != 42 {
+		t.Errorf("got %d, want 42", m)
+	}
+
+	if m := libtwo.MeaningLibTwo(); m != 97 {
+		t.Errorf("got %d, want 42", m)
+	}
 }

@@ -19,6 +19,6 @@ go_test(
     srcs = [
         "lib_test.go",
     ],
-    #deps = [":go_default_library"],
+    deps = [":go_default_library"],
     library = ":go_default_library",
 )
