@@ -184,6 +184,8 @@ def emit_go_compile_action(ctx, sources, deps, out_lib):
   cmds += [ "export GOROOT=$(pwd)/" + ctx.file.go_tool.dirname + "/..",
     ' '.join(args + cmd_helper.template(sources, prefix + "%{path}"))]
 
+  #print("\n".join(cmds))
+
   ctx.action(
       inputs = inputs + ctx.files.toolchain,
       outputs = [out_lib],
@@ -195,10 +197,16 @@ def go_library_impl(ctx):
   """Implements the go_library() rule."""
 
   sources = set(ctx.files.srcs)
+  transitive_libs = set()
   deps = ctx.attr.deps
+  print("deps: "+" ".join(deps))
   if ctx.attr.library:
+    print("direct_deps: %s  transitive_go_library_object: %s" % (
+	  ctx.attr.library.direct_deps,
+	  ctx.attr.library.transitive_go_library_object))
     sources += ctx.attr.library.go_sources
     deps += ctx.attr.library.direct_deps
+    transitive_libs += ctx.attr.library.transitive_go_library_object
 
   if not sources:
     fail("may not be empty", "srcs")
@@ -206,7 +214,7 @@ def go_library_impl(ctx):
   out_lib = ctx.outputs.lib
   emit_go_compile_action(ctx, set(sources), deps, out_lib)
 
-  transitive_libs = set([out_lib])
+  transitive_libs += [out_lib]
   for dep in ctx.attr.deps:
      transitive_libs += dep.transitive_go_library_object
 
@@ -236,6 +244,9 @@ def emit_go_link_action(ctx, transitive_libs, lib, executable):
   tree_layout[lib.path] = prefix + lib.path[config_strip:]
   tree_layout[executable.path] = prefix + executable.path[config_strip:]
 
+  print("transitive: %s  lib: %s" % (transitive_libs, lib))
+  print(tree_layout)
+
   cmds = symlink_tree_commands(out_dir, tree_layout)
   cmds += [
     "export GOROOT=$(pwd)/" + ctx.file.go_tool.dirname + "/..",
@@ -245,6 +256,8 @@ def emit_go_link_action(ctx, transitive_libs, lib, executable):
       "tool", "link", "-L", ".",
       "-o", prefix + executable.path[config_strip:],
       prefix + lib.path[config_strip:]])]
+
+  print("\n".join(cmds))
 
   ctx.action(
       inputs = list(transitive_libs) + [lib] + ctx.files.toolchain,
