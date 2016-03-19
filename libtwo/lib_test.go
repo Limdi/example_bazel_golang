@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package lib
+package libtwo
 
 import (
-	l "github.com/limdi/testing_go/lib"
-	"github.com/limdi/testing_go/libtwo"
+	//"github.com/limdi/testing_go/lib"
+	//"github.com/limdi/testing_go/libtwo"
 	"testing"
 )
 
@@ -26,11 +26,15 @@ func TestMeaning(t *testing.T) {
 		t.Errorf("got %d, want 42", m)
 	}
 
-	if m := l.MeaningLib(); m != 42 {
-		t.Errorf("got %d, want 42", m)
-	}
+	/*
+		if m := lib.MeaningLib(); m != 43 {
+			t.Errorf("got %d, want 43", m)
+		}
+	*/
 
-	if m := libtwo.MeaningLibTwo(); m != 97 {
-		t.Errorf("got %d, want 42", m)
-	}
+	/*
+		if m := libtwo.MeaningLibTwo(); m != 98 {
+			t.Errorf("got %d, want 98", m)
+		}
+	*/
 }
