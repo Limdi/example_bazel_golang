@@ -19,11 +19,6 @@ import (
 	"github.com/limdi/testing_go/lib"
 )
 
-// Meaning calculates the meaning of Life, the Universe and Everything.
-func Meaning() int {
-	return 42
-}
-
-func MeaningLibTwo() int {
-	return lib.MeaningLib() + 55
+func CombinedString() string {
+	return "Libtwo here, got message: " + lib.String()
 }

@@ -16,25 +16,11 @@ limitations under the License.
 package libtwo
 
 import (
-	//"github.com/limdi/testing_go/lib"
-	//"github.com/limdi/testing_go/libtwo"
 	"testing"
 )
 
 func TestMeaning(t *testing.T) {
-	if m := Meaning(); m != 42 {
-		t.Errorf("got %d, want 42", m)
+	if m := CombinedString(); m != "Libtwo here, got message: I am lib" {
+		t.Errorf("got %s, want 140", m)
 	}
-
-	/*
-		if m := lib.MeaningLib(); m != 43 {
-			t.Errorf("got %d, want 43", m)
-		}
-	*/
-
-	/*
-		if m := libtwo.MeaningLibTwo(); m != 98 {
-			t.Errorf("got %d, want 98", m)
-		}
-	*/
 }

@@ -2,7 +2,7 @@ package(
     default_visibility = ["//visibility:public"],
 )
 
-load("//go:def.bzl", "go_library", "go_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
     name = "go_default_library",
@@ -19,6 +19,7 @@ go_test(
     srcs = [
         "lib_test.go",
     ],
+    size = "small",
     #deps = [":go_default_library"],
     library = ":go_default_library",
 )

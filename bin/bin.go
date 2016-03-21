@@ -22,6 +22,5 @@ import (
 )
 
 func main() {
-	fmt.Println("meaning: ", libtwo.MeaningLibTwo())
-	//fmt.Println("vendored: ", vendored.Vendored())
+	fmt.Println(libtwo.CombinedString())
 }
